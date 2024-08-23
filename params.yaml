@@ -1,0 +1,11 @@
+
+base:
+  random_state: 42
+  log_level: INFO
+
+
+data_load:
+  dataset_url: 'https://download.pytorch.org/tutorial/hymenoptera_data.zip'
+  dataset_filename: 'hymenoptera_data.zip'
+  dataset_folder: 'data/hymenoptera_data'
+
