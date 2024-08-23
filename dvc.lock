@@ -1,0 +1,24 @@
+schema: '2.0'
+stages:
+  data_load:
+    cmd: python src/stages/data_load.py --config=params.yaml
+    deps:
+    - path: src/stages/data_load.py
+      hash: md5
+      md5: a9c1a2f4732d099cb7c8123342a55bfe
+      size: 1261
+    params:
+      params.yaml:
+        base:
+          random_state: 42
+          log_level: INFO
+        data_load:
+          dataset_url: https://download.pytorch.org/tutorial/hymenoptera_data.zip
+          dataset_filename: hymenoptera_data.zip
+          dataset_folder: data/hymenoptera_data
+    outs:
+    - path: data/
+      hash: md5
+      md5: c374b03a7f85ac0dac6d30a555fe9892.dir
+      size: 47385924
+      nfiles: 398
