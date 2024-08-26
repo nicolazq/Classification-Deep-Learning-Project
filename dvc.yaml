@@ -10,3 +10,14 @@ stages:
     outs:
     - data/
 
+  train:
+    cmd: python src/stages/train.py --config=params.yaml
+    deps:
+    - src/stages/train.py
+    - data/
+    params:
+    - base
+    - train
+    outs:
+    - models/
+
