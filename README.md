@@ -12,5 +12,7 @@ jupyter lab
 
 dvc init
 dvc repro
+
+mlflow ui
 ```
 

@@ -4,6 +4,8 @@ from tempfile import TemporaryDirectory
 
 import torch
 
+import mlflow
+
 from src.utils.logs import get_logger
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -65,7 +67,9 @@ def train_model(model, dataloaders, criterion, optimizer, scheduler, num_epochs=
                 epoch_loss = running_loss / dataset_sizes[phase]
                 epoch_acc = running_corrects.double() / dataset_sizes[phase]
 
-                print(f"{phase} Loss: {epoch_loss:.4f} Acc: {epoch_acc:.4f}")
+                print(f"{phase} Loss: {epoch_loss:.6f} Acc: {epoch_acc:.6f}")
+                mlflow.log_metric(f"{phase} loss", epoch_loss, step=epoch)
+                mlflow.log_metric(f"{phase} acc", epoch_acc.item(), step=epoch)
 
                 # deep copy the model
                 if phase == "val" and epoch_acc > best_acc:
@@ -78,7 +82,10 @@ def train_model(model, dataloaders, criterion, optimizer, scheduler, num_epochs=
         print(
             f"Training complete in {time_elapsed // 60:.0f}m {time_elapsed % 60:.0f}s"
         )
-        print(f"Best val Acc: {best_acc:4f}")
+        print(f"Best val Acc: {best_acc:.6f}")
+
+        mlflow.log_metric("best val accuracy",best_acc)
+
         print()
 
         # load best model weights

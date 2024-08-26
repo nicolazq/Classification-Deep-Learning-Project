@@ -2,7 +2,7 @@
 base:
   random_state: 42
   log_level: INFO
-
+  mlflow_experiment_name: classification
 
 data_load:
   dataset_url: 'https://download.pytorch.org/tutorial/hymenoptera_data.zip'
@@ -13,7 +13,7 @@ data_load:
 train:
   base_model_name: resnet18
   base_model_trainable: false
-  num_epochs: 1
+  num_epochs: 3
   optim_name: SGD
   optim:
     SGD:

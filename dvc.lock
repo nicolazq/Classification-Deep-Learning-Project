@@ -12,6 +12,7 @@ stages:
         base:
           random_state: 42
           log_level: INFO
+          mlflow_experiment_name: classification
         data_load:
           dataset_url: https://download.pytorch.org/tutorial/hymenoptera_data.zip
           dataset_filename: hymenoptera_data.zip
@@ -32,17 +33,18 @@ stages:
       nfiles: 398
     - path: src/stages/train.py
       hash: md5
-      md5: 7e2910cef08a3779a42cd9e727b2425f
-      size: 2120
+      md5: 10f46c0a7a994438ebf0233be57cdf75
+      size: 2652
     params:
       params.yaml:
         base:
           random_state: 42
           log_level: INFO
+          mlflow_experiment_name: classification
         train:
           base_model_name: resnet18
           base_model_trainable: false
-          num_epochs: 1
+          num_epochs: 3
           optim_name: SGD
           optim:
             SGD:
@@ -57,6 +59,6 @@ stages:
     outs:
     - path: models/
       hash: md5
-      md5: 6aeedd0681de71797d31cf78bd46e1a6.dir
+      md5: b6623033044f72bd47a243a75f8f86e8.dir
       size: 44780546
       nfiles: 1
