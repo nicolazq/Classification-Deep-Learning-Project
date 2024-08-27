@@ -9,7 +9,7 @@ on:
 
 jobs:
   train-and-report:
-    runs-on: nicolas-Laptop
+    runs-on: self-hosted
     steps:
       - name: Check out code
         uses: actions/checkout@v3
