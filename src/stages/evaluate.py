@@ -72,6 +72,7 @@ def evaluate(config_path: Text) -> None:
     cm_plot = plot_confusion_matrix(cm, target_names, normalize=False)
 
     f1 = f1_score(y_true=y_test, y_pred=prediction, average="macro")
+    logger.info(f"f1 = {f1}")
 
     reports_folder = Path(config["evaluate"]["reports_dir"])
     Path(reports_folder).mkdir(parents=True, exist_ok=True)
