@@ -9,7 +9,7 @@ on:
 
 jobs:
   train-and-report:
-    runs-on: ubuntu-latest
+    runs-on: nicolas-Laptop
     steps:
       - name: Check out code
         uses: actions/checkout@v3
