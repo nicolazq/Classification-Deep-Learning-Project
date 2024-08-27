@@ -33,8 +33,8 @@ stages:
       nfiles: 398
     - path: src/stages/train.py
       hash: md5
-      md5: 10f46c0a7a994438ebf0233be57cdf75
-      size: 2652
+      md5: 7ade5eeccc9ff1a11e9bce6785423df1
+      size: 2644
     params:
       params.yaml:
         base:
@@ -44,7 +44,7 @@ stages:
         train:
           base_model_name: resnet18
           base_model_trainable: false
-          num_epochs: 3
+          num_epochs: 1
           optim_name: SGD
           optim:
             SGD:
@@ -59,6 +59,39 @@ stages:
     outs:
     - path: models/
       hash: md5
-      md5: b6623033044f72bd47a243a75f8f86e8.dir
+      md5: 6aeedd0681de71797d31cf78bd46e1a6.dir
       size: 44780546
       nfiles: 1
+  evaluate:
+    cmd: python src/stages/evaluate.py --config=params.yaml
+    deps:
+    - path: data/
+      hash: md5
+      md5: c374b03a7f85ac0dac6d30a555fe9892.dir
+      size: 47385924
+      nfiles: 398
+    - path: models/
+      hash: md5
+      md5: 6aeedd0681de71797d31cf78bd46e1a6.dir
+      size: 44780546
+      nfiles: 1
+    - path: src/stages/evaluate.py
+      hash: md5
+      md5: e4bf0f98e2e4e9048a10406569662837
+      size: 5258
+    params:
+      params.yaml:
+        base:
+          random_state: 42
+          log_level: INFO
+          mlflow_experiment_name: classification
+        evaluate:
+          reports_dir: reports
+          metrics_file: metrics.json
+          confusion_matrix_image: confusion_matrix.png
+    outs:
+    - path: reports/
+      hash: md5
+      md5: 6016dda8f6cbb098a7aaf1d1ca7b9d4e.dir
+      size: 20128
+      nfiles: 2

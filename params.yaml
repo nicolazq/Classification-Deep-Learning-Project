@@ -4,6 +4,7 @@ base:
   log_level: INFO
   mlflow_experiment_name: classification
 
+
 data_load:
   dataset_url: 'https://download.pytorch.org/tutorial/hymenoptera_data.zip'
   dataset_filename: 'hymenoptera_data.zip'
@@ -13,7 +14,7 @@ data_load:
 train:
   base_model_name: resnet18
   base_model_trainable: false
-  num_epochs: 3
+  num_epochs: 1
   optim_name: SGD
   optim:
     SGD:
@@ -25,3 +26,9 @@ train:
       step_size: 7
       gamma: 0.1
   model_path: models/model.pt
+
+
+evaluate:
+  reports_dir: reports
+  metrics_file: 'metrics.json'
+  confusion_matrix_image: 'confusion_matrix.png'

@@ -14,5 +14,6 @@ dvc init
 dvc repro
 
 mlflow ui
+mlflow gc
 ```
 

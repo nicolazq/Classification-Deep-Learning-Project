@@ -21,3 +21,14 @@ stages:
     outs:
     - models/
 
+  evaluate:
+    cmd: python src/stages/evaluate.py --config=params.yaml
+    deps:
+    - src/stages/evaluate.py
+    - models/
+    - data/
+    params:
+    - base
+    - evaluate
+    outs:
+    - reports/
