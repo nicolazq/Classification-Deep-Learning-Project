@@ -14,8 +14,11 @@ from src.utils.logs import get_logger
 from src.utils.train_model import train_model
 
 import mlflow
+from dotenv import find_dotenv, load_dotenv
 
 def train(config_path: Text) -> None:
+
+    _ = load_dotenv(find_dotenv())
 
     with open(config_path) as conf_file:
         config = yaml.safe_load(conf_file)
