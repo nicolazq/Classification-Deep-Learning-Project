@@ -15,6 +15,9 @@ def train_model(model, dataloaders, criterion, optimizer, scheduler, num_epochs=
 
     model = model.to(device)
     dataset_sizes = {x: len(dataloaders[x].dataset) for x in ["train", "val"]}
+
+    print(f'train model ## device: {device}')
+
     since = time.time()
 
     # Create a temporary directory to save training checkpoints

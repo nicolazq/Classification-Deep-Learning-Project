@@ -69,7 +69,7 @@ def train(config_path: Text) -> None:
         }
         mlflow.log_params(params)
 
-
+        logger.info("train model")
         model = train_model(
             model,
             dataloaders,

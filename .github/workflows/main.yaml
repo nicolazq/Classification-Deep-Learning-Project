@@ -9,7 +9,7 @@ on:
 
 jobs:
   train-and-report:
-    runs-on: self-hosted
+    runs-on: ec2-cpu
     steps:
       - name: Check out code
         uses: actions/checkout@v3
